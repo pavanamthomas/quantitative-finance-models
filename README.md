@@ -1,5 +1,7 @@
 # quantitative-finance-models
 
+[![CI](https://github.com/pavanamthomas/quantitative-finance-models/actions/workflows/ci.yml/badge.svg)](https://github.com/pavanamthomas/quantitative-finance-models/actions)
+
 Educational quantitative-finance models covering valuation, portfolios, fixed income, derivatives, risk, and model validation.
 
 This repository is an analytical and educational quantitative-finance portfolio. It does not represent trading advice or professional trading performance.
