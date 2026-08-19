@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: If you use this software, please cite it using these metadata.
+type: software
+title: quantitative-finance-models
+abstract: Educational quantitative-finance models covering valuation, portfolios, fixed income, derivatives, risk, and model validation.
+authors:
+  - family-names: Thomas
+    given-names: Pavanam
+    email: thomaspavanam@gmail.com
+    alias: pavanamthomas
+license: MIT
+version: 0.1.0
+date-released: "2026-08-19"
+repository-code: https://github.com/pavanamthomas/quantitative-finance-models
+url: https://github.com/pavanamthomas/quantitative-finance-models
+keywords:
+  - quantitative finance
+  - fixed income
+  - portfolio theory
+  - derivatives
+  - risk
+  - model validation

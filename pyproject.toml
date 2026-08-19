@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "qfinmodels"
+version = "0.1.0"
+description = "Educational quantitative-finance models covering valuation, portfolios, fixed income, derivatives, risk, and model validation."
+readme = "README.md"
+license = { text = "MIT" }
+authors = [
+  { name = "Dr. Pavanam Thomas", email = "thomaspavanam@gmail.com" },
+]
+requires-python = ">=3.11"
+dependencies = [
+  "numpy",
+  "pandas",
+  "scipy",
+  "statsmodels",
+  "matplotlib",
+]
+classifiers = [
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Intended Audience :: Education",
+  "Topic :: Scientific/Engineering :: Mathematics",
+]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+[project.urls]
+Homepage = "https://github.com/pavanamthomas/quantitative-finance-models"
+Related-TimeSeries = "https://github.com/pavanamthomas/time-series-forecasting-lab"
+Related-Optimization = "https://github.com/pavanamthomas/optimization-decision-models"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-q"
