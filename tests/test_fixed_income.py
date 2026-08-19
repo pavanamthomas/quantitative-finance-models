@@ -61,3 +61,21 @@ def test_duration_convexity_error_shrinks_for_small_shocks():
     # The second-order map should be closer than a few cents on a 10bp move
     # of a 100-face bond.
     assert err_small < 0.01
+
+
+def test_full_reprice_is_the_correction_for_a_large_yield_shock():
+    from qfinmodels.fixed_income import price_after_yield_shift
+
+    face, coupon, years, ytm, freq = 100.0, 0.05, 10.0, 0.06, 1
+    shock = 0.025
+    true_price = price_after_yield_shift(
+        face, coupon, years, ytm, shock, frequency=freq, method="reprice"
+    )
+    approx = price_after_yield_shift(
+        face, coupon, years, ytm, shock, frequency=freq, method="duration_convexity"
+    )
+    assert abs(true_price - approx) > 0.05
+    assert abs(
+        true_price
+        - bond_price(face, coupon, years, ytm + shock, frequency=freq)
+    ) < 1e-12

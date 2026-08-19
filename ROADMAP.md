@@ -20,10 +20,8 @@ Details: `docs/failures_and_corrections.md`.
 
 ## Open (issues)
 
-1. No third-party market dataset is committed. A download script for a public series would need an explicit redistribution check before any file is stored.
-2. Historical VaR/ES are iid sample functionals. They are not a backtest against a trading book.
-3. GARCH QMLE is Gaussian. t-innovations and variance targeting are not implemented.
-4. Multi-factor models beyond a single simulated beta illustration are out of scope.
+1. GARCH QMLE remains Gaussian. t-innovations are not implemented.
+2. Multi-factor models beyond a single simulated beta illustration are out of scope.
 
 ## Explicitly not in scope
 

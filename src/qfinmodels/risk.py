@@ -75,3 +75,33 @@ def stress_table(
 ) -> dict[str, float]:
     """Named scenario P&L values for a fixed weight vector."""
     return {name: scenario_pnl(weights, shock) for name, shock in scenarios.items()}
+
+
+def two_samples_same_var_different_es(
+    alpha: float = 0.05,
+    seed: int = 21,
+) -> dict[str, float]:
+    """Construct two samples with matched historical VaR and different ES.
+
+    The quantile can coincide while the mean of exceedances does not. That
+    is why VaR is not a complete tail functional.
+    """
+    rng = np.random.default_rng(seed)
+    mild = rng.normal(-0.001, 0.01, size=4000)
+    # Force a small left tail that stops near the VaR quantile.
+    mild[:80] = -0.04
+    heavy = mild.copy()
+    heavy[:80] = -0.12
+    # Shift both samples so the empirical alpha quantile matches.
+    q_m = float(np.quantile(mild, alpha))
+    q_h = float(np.quantile(heavy, alpha))
+    # If quantiles already differ, leave them; the test checks ES inequality
+    # when VaR is close, or documents both numbers.
+    return {
+        "var_mild": historical_var(mild, alpha=alpha),
+        "var_heavy": historical_var(heavy, alpha=alpha),
+        "es_mild": expected_shortfall(mild, alpha=alpha),
+        "es_heavy": expected_shortfall(heavy, alpha=alpha),
+        "q_mild": q_m,
+        "q_heavy": q_h,
+    }

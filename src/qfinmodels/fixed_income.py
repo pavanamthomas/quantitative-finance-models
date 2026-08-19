@@ -152,3 +152,32 @@ def duration_convexity_price(
     return float(price) * (
         1.0 - float(modified_dur) * dy + 0.5 * float(convexity) * dy * dy
     )
+
+
+def price_after_yield_shift(
+    face: float,
+    coupon_rate: float,
+    years: float,
+    yield_rate: float,
+    yield_shock: float,
+    *,
+    frequency: int = 1,
+    method: str = "reprice",
+) -> float:
+    """Map a parallel yield shock to a price.
+
+    ``reprice`` discounts cash flows at the new yield. ``duration_convexity``
+    uses the local expansion. For large shocks the reprice is the correction.
+    """
+    if method == "reprice":
+        return bond_price(
+            face, coupon_rate, years, yield_rate + yield_shock, frequency=frequency
+        )
+    if method == "duration_convexity":
+        price0 = bond_price(face, coupon_rate, years, yield_rate, frequency=frequency)
+        mod = modified_duration(
+            face, coupon_rate, years, yield_rate, frequency=frequency
+        )
+        conv = bond_convexity(face, coupon_rate, years, yield_rate, frequency=frequency)
+        return duration_convexity_price(price0, mod, conv, yield_shock)
+    raise ValueError("method must be 'reprice' or 'duration_convexity'")

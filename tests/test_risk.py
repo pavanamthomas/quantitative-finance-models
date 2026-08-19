@@ -47,3 +47,12 @@ def test_scenario_and_stress_tables():
     table = stress_table(weights, {"down": shock, "flat": np.zeros(2)})
     assert abs(table["down"] - pnl) < 1e-15
     assert abs(table["flat"]) < 1e-15
+
+
+def test_var_does_not_determine_expected_shortfall():
+    from qfinmodels.risk import two_samples_same_var_different_es
+
+    out = two_samples_same_var_different_es(alpha=0.05, seed=21)
+    assert out["es_heavy"] > out["es_mild"]
+    assert out["es_mild"] >= out["var_mild"] - 1e-12
+    assert out["es_heavy"] >= out["var_heavy"] - 1e-12
