@@ -4,11 +4,8 @@ These notes sit beside the code. The library evaluates identities and
 estimators under stated assumptions. A number that prints cleanly is not, by
 itself, evidence that a model is adequate for a decision.
 
-The working sequence used throughout the repository is:
-
-Problem → formalization → assumptions → computation/estimation → validation → interpretation → limitations
-
-Model risk enters at every step after the problem is named.
+Model risk enters as soon as the formula is treated as a description of a
+market rather than as an identity under its assumptions.
 
 ## Model assumptions
 

@@ -18,7 +18,10 @@ This repository is an analytical and educational quantitative-finance portfolio.
 
 Details: `docs/failures_and_corrections.md`.
 
-## Open (issues)
+## Remaining bounds
+
+Issues #1–#3 were closed after duration–convexity shock tests, VaR/ES
+ordering, and the committed-data policy. Still unimplemented:
 
 1. GARCH QMLE remains Gaussian. t-innovations are not implemented.
 2. Multi-factor models beyond a single simulated beta illustration are out of scope.

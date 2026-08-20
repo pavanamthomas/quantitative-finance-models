@@ -15,11 +15,10 @@ Related work:
 
 ## Methodology
 
-Work in this repository follows a single sequence:
-
-**Problem → formalization → assumptions → computation/estimation → validation → interpretation → limitations**
-
-The test suite addresses the validation step for identities that admit a known numerical check. `MODEL_RISK_NOTES.md` addresses the limitations step: a correct implementation of a formula does not establish that the formula is an adequate description of a market. Open work is `ROADMAP.md` and GitHub Issues. Failures retained on purpose are `docs/failures_and_corrections.md`.
+Identities that admit a known numerical check are tested. `MODEL_RISK_NOTES.md`
+records the further limit: a correct implementation of a formula does not
+establish that the formula describes a market. Open work is `ROADMAP.md`.
+Failures retained on purpose are `docs/failures_and_corrections.md`.
 
 ## Contents
 
